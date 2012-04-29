@@ -17,9 +17,12 @@
 		56849798154C00BF001601A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56849797154C00BF001601A2 /* ViewController.m */; };
 		5684979F154C010C001601A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5684979E154C010C001601A2 /* MapKit.framework */; };
 		568497A1154C0116001601A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568497A0154C0116001601A2 /* CoreLocation.framework */; };
-		568497A8154C3FA7001601A2 /* GooglePlaceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 568497A7154C3FA7001601A2 /* GooglePlaceObject.m */; };
-		56AD6620154C75BB002C395B /* code in Resources */ = {isa = PBXBuildFile; fileRef = 56AD661F154C75BB002C395B /* code */; };
 		56AD6627154C97B8002C395B /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6626154C97B8002C395B /* MapPoint.m */; };
+		56AD663A154D4D38002C395B /* atm.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AD6636154D4D38002C395B /* atm.png */; };
+		56AD663B154D4D38002C395B /* bar.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AD6637154D4D38002C395B /* bar.png */; };
+		56AD663C154D4D38002C395B /* cafe.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AD6638154D4D38002C395B /* cafe.png */; };
+		56AD663D154D4D38002C395B /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AD6639154D4D38002C395B /* park.png */; };
+		56AD663F154D4F74002C395B /* florist.png in Resources */ = {isa = PBXBuildFile; fileRef = 56AD663E154D4F74002C395B /* florist.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +41,13 @@
 		56849797154C00BF001601A2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5684979E154C010C001601A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		568497A0154C0116001601A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		568497A6154C3FA7001601A2 /* GooglePlaceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GooglePlaceObject.h; path = ../GooglePlaceObject.h; sourceTree = "<group>"; };
-		568497A7154C3FA7001601A2 /* GooglePlaceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GooglePlaceObject.m; path = ../GooglePlaceObject.m; sourceTree = "<group>"; };
-		56AD661F154C75BB002C395B /* code */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code; sourceTree = "<group>"; };
 		56AD6625154C97B8002C395B /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapPoint.h; path = ../MapPoint.h; sourceTree = "<group>"; };
 		56AD6626154C97B8002C395B /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPoint.m; path = ../MapPoint.m; sourceTree = "<group>"; };
+		56AD6636154D4D38002C395B /* atm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atm.png; sourceTree = "<group>"; };
+		56AD6637154D4D38002C395B /* bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bar.png; sourceTree = "<group>"; };
+		56AD6638154D4D38002C395B /* cafe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cafe.png; sourceTree = "<group>"; };
+		56AD6639154D4D38002C395B /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park.png; sourceTree = "<group>"; };
+		56AD663E154D4F74002C395B /* florist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = florist.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,9 +105,11 @@
 				56849797154C00BF001601A2 /* ViewController.m */,
 				56AD6625154C97B8002C395B /* MapPoint.h */,
 				56AD6626154C97B8002C395B /* MapPoint.m */,
-				568497A6154C3FA7001601A2 /* GooglePlaceObject.h */,
-				568497A7154C3FA7001601A2 /* GooglePlaceObject.m */,
-				56AD661F154C75BB002C395B /* code */,
+				56AD663E154D4F74002C395B /* florist.png */,
+				56AD6636154D4D38002C395B /* atm.png */,
+				56AD6637154D4D38002C395B /* bar.png */,
+				56AD6638154D4D38002C395B /* cafe.png */,
+				56AD6639154D4D38002C395B /* park.png */,
 				56849788154C00BF001601A2 /* Supporting Files */,
 			);
 			path = GooglePlaces;
@@ -171,7 +178,11 @@
 			files = (
 				5684978C154C00BF001601A2 /* InfoPlist.strings in Resources */,
 				56849795154C00BF001601A2 /* MainStoryboard.storyboard in Resources */,
-				56AD6620154C75BB002C395B /* code in Resources */,
+				56AD663A154D4D38002C395B /* atm.png in Resources */,
+				56AD663B154D4D38002C395B /* bar.png in Resources */,
+				56AD663C154D4D38002C395B /* cafe.png in Resources */,
+				56AD663D154D4D38002C395B /* park.png in Resources */,
+				56AD663F154D4F74002C395B /* florist.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +196,6 @@
 				5684978E154C00BF001601A2 /* main.m in Sources */,
 				56849792154C00BF001601A2 /* AppDelegate.m in Sources */,
 				56849798154C00BF001601A2 /* ViewController.m in Sources */,
-				568497A8154C3FA7001601A2 /* GooglePlaceObject.m in Sources */,
 				56AD6627154C97B8002C395B /* MapPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

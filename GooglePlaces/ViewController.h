@@ -20,6 +20,8 @@
 @interface ViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
+    NSString *imageName;
+    
 
 }
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;

@@ -27,7 +27,7 @@
     //Instantiate a location object.
     locationManager = [[CLLocationManager alloc] init];
     
-    //Make this controller the delegate for the location manager,
+    //Make this controller the delegate for the location manager.
     [locationManager setDelegate:self];
     
     //Set some paramater for the location object.
@@ -51,18 +51,17 @@
 
 -(void) queryGooglePlaces: (NSString *) googleType
 {
-    //googleType=@"bar";
-    
-    
-    
+    // Obtain the coordinate for our current location.
     CLLocationCoordinate2D userCoordinate = locationManager.location.coordinate;
     
+    // Build the url string we are going to sent to Google. NOTE: The kGOOGLE_API_KEY is a constant which should contain your own API key that you can obtain from Google. See this link for more info:
+    // https://developers.google.com/maps/documentation/places/#Authentication
     NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=900&types=%@&sensor=true&key=%@", userCoordinate.latitude, userCoordinate.longitude, googleType, kGOOGLE_API_KEY];
     
-    
-    
+    //Formulate the string as URL object.
     NSURL *googleRequestURL=[NSURL URLWithString:url];
     
+    // Retrieve the results of the URL.
     dispatch_async(kBgQueue, ^{
         NSData* data = [NSData dataWithContentsOfURL: googleRequestURL];
         [self performSelectorOnMainThread:@selector(fetchedData:) withObject:data waitUntilDone:YES];
@@ -78,26 +77,31 @@
                           options:kNilOptions 
                           error:&error];
     
+    //The results from Google will be an array obtained from the NSDictionary object with the key "results".
     NSArray* places = [json objectForKey:@"results"]; 
     
+    //Write out the data to the console.
+    NSLog(@"Google Data: %@", places);
     
-    
-    NSLog(@"Google Data: %@", places); //3
-    
-    
+    //Plot the data in the places array onto the map with the plotPostions method.
     [self plotPositions:places];
     
     
 }
 - (IBAction)toolbarButtonPresses:(id)sender {
+    
+    //Obtain the title of the toolbar button being pressed. The title will be the "type" we send in the url.
     UIBarButtonItem *button = (UIBarButtonItem *)sender; 
     NSString *buttonTitle = [button.title lowercaseString];
     
-    NSLog(@"Button pressed was:%@ ", buttonTitle);
+    //Set the image title
+    imageName=[[NSString alloc] init];
+    imageName=[NSString stringWithFormat:@"%@.png", buttonTitle];
     
+    
+    //Use this title text to build the URL query and get the data from Google.
     [self queryGooglePlaces:buttonTitle];
 }
-
 
 - (void)plotPositions:(NSArray *)data
 {
@@ -118,22 +122,25 @@
         //Retrieve the NSDictionary object in each index of the array.
         NSDictionary* place = [data objectAtIndex:i];
         
-        //There are some other objects embedded so get these,
+        //There is a specific NSDictionary object that gives us location info.
         NSDictionary *geo = [place objectForKey:@"geometry"];
         
         
-
+        //Get our name and address info for adding to a pin.
         NSString *name=[place objectForKey:@"name"];
-        NSString *icon=[place objectForKey:@"icon"];
-
         NSString *vicinity=[place objectForKey:@"vicinity"];
         
+        //Get the lat and long for the location.
         NSDictionary *loc = [geo objectForKey:@"location"];
-
+        
+        //Create a special variable to hold this coordinate info.
         CLLocationCoordinate2D placeCoord;
+        
+        //Set the lat and long.
         placeCoord.latitude=[[loc objectForKey:@"lat"] doubleValue];
         placeCoord.longitude=[[loc objectForKey:@"lng"] doubleValue];
         
+        //Create a new annotiation.
         MapPoint *placeObject = [[MapPoint alloc] initWithName:name address:vicinity coordinate:placeCoord];
         
         
@@ -147,10 +154,8 @@
 
 - (void)mapView:(MKMapView *)mv didAddAnnotationViews:(NSArray *)views
 {    
-    //Since there is only one annotation view on the map we can access it as index 0.
-    //MKAnnotationView *annotationView = [views objectAtIndex:0];
     
-    //id<MKAnnotation> mp = [annotationView annotation];
+    //Zoom back to the user location after adding a new set of annotations.
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(locationManager.location.coordinate,1000,1000);
     
@@ -160,7 +165,10 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
     
+    //Define our reuse indentifier.
     static NSString *identifier = @"MapPoint";   
+    
+    
     if ([annotation isKindOfClass:[MapPoint class]]) {
         
         MKPinAnnotationView *annotationView = (MKPinAnnotationView *) [self.mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
@@ -173,29 +181,21 @@
         annotationView.enabled = YES;
         annotationView.canShowCallout = YES;
         annotationView.animatesDrop = YES;
+        
+        //Get an image to display on the left hand side of the callout.
+        UIImageView *test = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imageName]];
+        
+        //Resize the image to make it fit nicely.
+        [test setFrame:CGRectMake(0, 0, 30, 30)];
 
-        //annotationView.image=[UIImage imageNamed:@"arrest.png"];//here we use a nice image instead of the default pins
+        //Set the image in the callout.
+        annotationView.leftCalloutAccessoryView = test;
+
         
         return annotationView;
     }
     
     return nil;    
-}
-
-- (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-//    CLLocationCoordinate2D userCoordinate = userLocation.location.coordinate; 
-//    
-//    for(int i = 1; i<=5;i++) 
-//    {
-//        CGFloat latDelta = rand()*.035/RAND_MAX -.02;
-//        CGFloat longDelta = rand()*.03/RAND_MAX -.015;
-//        
-//        CLLocationCoordinate2D newCoord = { userCoordinate.latitude + latDelta, userCoordinate.longitude + longDelta };
-//        MapPoint *mp = [[MapPoint alloc] initWithName:@"Test" address:@"2 Heath St" coordinate:newCoord];    
-//        [mv addAnnotation:mp]; 
-//        
-//    }
 }
 
 @end

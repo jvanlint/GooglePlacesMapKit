@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="M4J-Pp-Qr0">
-                                <rect key="frame" x="0.0" y="44" width="325" height="421"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="dHI-p6-bd8">
@@ -33,7 +33,7 @@
                                             <action selector="toolbarButtonPresses:" destination="2" id="WLk-fW-Phy"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Rest." id="vhT-mV-TIN">
+                                    <barButtonItem title="Florist" id="vhT-mV-TIN">
                                         <connections>
                                             <action selector="toolbarButtonPresses:" destination="2" id="8kC-At-kgw"/>
                                         </connections>
@@ -43,7 +43,7 @@
                                             <action selector="toolbarButtonPresses:" destination="2" id="pTK-a3-DEn"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Parking" id="2Bw-k1-RNM">
+                                    <barButtonItem title="Park" id="2Bw-k1-RNM">
                                         <connections>
                                             <action selector="toolbarButtonPresses:" destination="2" id="mo3-qy-Knc"/>
                                         </connections>
