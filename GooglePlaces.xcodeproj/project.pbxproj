@@ -15,6 +15,11 @@
 		56849792154C00BF001601A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 56849791154C00BF001601A2 /* AppDelegate.m */; };
 		56849795154C00BF001601A2 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56849793154C00BF001601A2 /* MainStoryboard.storyboard */; };
 		56849798154C00BF001601A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56849797154C00BF001601A2 /* ViewController.m */; };
+		5684979F154C010C001601A2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5684979E154C010C001601A2 /* MapKit.framework */; };
+		568497A1154C0116001601A2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568497A0154C0116001601A2 /* CoreLocation.framework */; };
+		568497A8154C3FA7001601A2 /* GooglePlaceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 568497A7154C3FA7001601A2 /* GooglePlaceObject.m */; };
+		56AD6620154C75BB002C395B /* code in Resources */ = {isa = PBXBuildFile; fileRef = 56AD661F154C75BB002C395B /* code */; };
+		56AD6627154C97B8002C395B /* MapPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 56AD6626154C97B8002C395B /* MapPoint.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +27,22 @@
 		56849781154C00BF001601A2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		56849783154C00BF001601A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		56849785154C00BF001601A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		56849789154C00BF001601A2 /* GooglePlaces-Info.plist */ = {isa = PBXFileReference; path = "GooglePlaces-Info.plist"; sourceTree = "<group>"; };
+		56849789154C00BF001601A2 /* GooglePlaces-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GooglePlaces-Info.plist"; sourceTree = "<group>"; };
 		5684978B154C00BF001601A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5684978D154C00BF001601A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5684978F154C00BF001601A2 /* GooglePlaces-Prefix.pch */ = {isa = PBXFileReference; path = "GooglePlaces-Prefix.pch"; sourceTree = "<group>"; };
-		56849790154C00BF001601A2 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		5684978F154C00BF001601A2 /* GooglePlaces-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GooglePlaces-Prefix.pch"; sourceTree = "<group>"; };
+		56849790154C00BF001601A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		56849791154C00BF001601A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		56849794154C00BF001601A2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		56849796154C00BF001601A2 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		56849796154C00BF001601A2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		56849797154C00BF001601A2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		5684979E154C010C001601A2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		568497A0154C0116001601A2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		568497A6154C3FA7001601A2 /* GooglePlaceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GooglePlaceObject.h; path = ../GooglePlaceObject.h; sourceTree = "<group>"; };
+		568497A7154C3FA7001601A2 /* GooglePlaceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GooglePlaceObject.m; path = ../GooglePlaceObject.m; sourceTree = "<group>"; };
+		56AD661F154C75BB002C395B /* code */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = code; sourceTree = "<group>"; };
+		56AD6625154C97B8002C395B /* MapPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapPoint.h; path = ../MapPoint.h; sourceTree = "<group>"; };
+		56AD6626154C97B8002C395B /* MapPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapPoint.m; path = ../MapPoint.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				568497A1154C0116001601A2 /* CoreLocation.framework in Frameworks */,
+				5684979F154C010C001601A2 /* MapKit.framework in Frameworks */,
 				56849782154C00BF001601A2 /* UIKit.framework in Frameworks */,
 				56849784154C00BF001601A2 /* Foundation.framework in Frameworks */,
 				56849786154C00BF001601A2 /* CoreGraphics.framework in Frameworks */,
@@ -50,6 +64,8 @@
 		56849772154C00BF001601A2 = {
 			isa = PBXGroup;
 			children = (
+				568497A0154C0116001601A2 /* CoreLocation.framework */,
+				5684979E154C010C001601A2 /* MapKit.framework */,
 				56849787154C00BF001601A2 /* GooglePlaces */,
 				56849780154C00BF001601A2 /* Frameworks */,
 				5684977E154C00BF001601A2 /* Products */,
@@ -82,6 +98,11 @@
 				56849793154C00BF001601A2 /* MainStoryboard.storyboard */,
 				56849796154C00BF001601A2 /* ViewController.h */,
 				56849797154C00BF001601A2 /* ViewController.m */,
+				56AD6625154C97B8002C395B /* MapPoint.h */,
+				56AD6626154C97B8002C395B /* MapPoint.m */,
+				568497A6154C3FA7001601A2 /* GooglePlaceObject.h */,
+				568497A7154C3FA7001601A2 /* GooglePlaceObject.m */,
+				56AD661F154C75BB002C395B /* code */,
 				56849788154C00BF001601A2 /* Supporting Files */,
 			);
 			path = GooglePlaces;
@@ -150,6 +171,7 @@
 			files = (
 				5684978C154C00BF001601A2 /* InfoPlist.strings in Resources */,
 				56849795154C00BF001601A2 /* MainStoryboard.storyboard in Resources */,
+				56AD6620154C75BB002C395B /* code in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +185,8 @@
 				5684978E154C00BF001601A2 /* main.m in Sources */,
 				56849792154C00BF001601A2 /* AppDelegate.m in Sources */,
 				56849798154C00BF001601A2 /* ViewController.m in Sources */,
+				568497A8154C3FA7001601A2 /* GooglePlaceObject.m in Sources */,
+				56AD6627154C97B8002C395B /* MapPoint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +298,7 @@
 				5684979D154C00BF001601A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
