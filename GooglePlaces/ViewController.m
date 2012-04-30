@@ -37,6 +37,9 @@
     // Ensure that we can view our own location in the map view.
     [self.mapView setShowsUserLocation:YES];
     
+    //Set the first launch instance variable to allow the map to zoom on the user location when first launched.
+    firstLaunch=YES;
+    
 }
 
 - (void)viewDidUnload
@@ -49,14 +52,17 @@
     
 }
 
--(void) queryGooglePlaces: (NSString *) googleType
+-(void) queryGooglePlaces: (NSString *) googleType radius:(NSString *)rad
 {
     // Obtain the coordinate for our current location.
     CLLocationCoordinate2D userCoordinate = locationManager.location.coordinate;
     
+    //Get our radius for the search and set our instance variable to update the map view radius when annotations are added.
+    radius=[rad intValue];
+    
     // Build the url string we are going to sent to Google. NOTE: The kGOOGLE_API_KEY is a constant which should contain your own API key that you can obtain from Google. See this link for more info:
     // https://developers.google.com/maps/documentation/places/#Authentication
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=900&types=%@&sensor=true&key=%@", userCoordinate.latitude, userCoordinate.longitude, googleType, kGOOGLE_API_KEY];
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", userCoordinate.latitude, userCoordinate.longitude, rad, googleType, kGOOGLE_API_KEY];
     
     //Formulate the string as URL object.
     NSURL *googleRequestURL=[NSURL URLWithString:url];
@@ -99,8 +105,8 @@
     imageName=[NSString stringWithFormat:@"%@.png", buttonTitle];
     
     
-    //Use this title text to build the URL query and get the data from Google.
-    [self queryGooglePlaces:buttonTitle];
+    //Use this title text to build the URL query and get the data from Google. Change the radius value to increase the size of the search area in meters. The max is 50,000.
+    [self queryGooglePlaces:buttonTitle radius:@"900"];
 }
 
 - (void)plotPositions:(NSArray *)data
@@ -157,8 +163,21 @@
     
     //Zoom back to the user location after adding a new set of annotations.
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(locationManager.location.coordinate,1000,1000);
+    //Get the center point of the visible map.
+    CLLocationCoordinate2D centre = [mv centerCoordinate];
+   
+    MKCoordinateRegion region;
     
+    //If this is the first launch of the app then set the center point of the map to the user's location.
+    if (firstLaunch) {
+        region = MKCoordinateRegionMakeWithDistance(locationManager.location.coordinate,1000,1000);
+        firstLaunch=NO;
+    }else {
+        //Set the center point to the visible region of the map and change the radius to match the search radius passed to the Google query string.
+        region = MKCoordinateRegionMakeWithDistance(centre,radius,radius);
+    }
+   
+    //Set the visible region of the map.
     [mv setRegion:region animated:YES];
     
 }

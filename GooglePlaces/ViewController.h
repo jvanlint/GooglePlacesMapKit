@@ -21,6 +21,8 @@
 {
     CLLocationManager *locationManager;
     NSString *imageName;
+    BOOL firstLaunch;
+    int radius;
     
 
 }
