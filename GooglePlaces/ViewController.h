@@ -20,9 +20,13 @@
 @interface ViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
 {
     CLLocationManager *locationManager;
+    
+    
     NSString *imageName;
     BOOL firstLaunch;
-    int radius;
+    
+    CLLocationCoordinate2D currentCentre;
+    int currenDist;
     
 
 }

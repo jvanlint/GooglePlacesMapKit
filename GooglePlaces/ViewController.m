@@ -52,17 +52,13 @@
     
 }
 
--(void) queryGooglePlaces: (NSString *) googleType radius:(NSString *)rad
+-(void) queryGooglePlaces: (NSString *) googleType
 {
-    // Obtain the coordinate for our current location.
-    CLLocationCoordinate2D userCoordinate = locationManager.location.coordinate;
-    
-    //Get our radius for the search and set our instance variable to update the map view radius when annotations are added.
-    radius=[rad intValue];
+
     
     // Build the url string we are going to sent to Google. NOTE: The kGOOGLE_API_KEY is a constant which should contain your own API key that you can obtain from Google. See this link for more info:
     // https://developers.google.com/maps/documentation/places/#Authentication
-    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", userCoordinate.latitude, userCoordinate.longitude, rad, googleType, kGOOGLE_API_KEY];
+    NSString *url = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/search/json?location=%f,%f&radius=%@&types=%@&sensor=true&key=%@", currentCentre.latitude, currentCentre.longitude, [NSString stringWithFormat:@"%i", currenDist], googleType, kGOOGLE_API_KEY];
     
     //Formulate the string as URL object.
     NSURL *googleRequestURL=[NSURL URLWithString:url];
@@ -104,9 +100,10 @@
     imageName=[[NSString alloc] init];
     imageName=[NSString stringWithFormat:@"%@.png", buttonTitle];
     
+
     
     //Use this title text to build the URL query and get the data from Google. Change the radius value to increase the size of the search area in meters. The max is 50,000.
-    [self queryGooglePlaces:buttonTitle radius:@"900"];
+    [self queryGooglePlaces:buttonTitle];
 }
 
 - (void)plotPositions:(NSArray *)data
@@ -174,7 +171,7 @@
         firstLaunch=NO;
     }else {
         //Set the center point to the visible region of the map and change the radius to match the search radius passed to the Google query string.
-        region = MKCoordinateRegionMakeWithDistance(centre,radius,radius);
+        region = MKCoordinateRegionMakeWithDistance(centre,currenDist,currenDist);
     }
    
     //Set the visible region of the map.
@@ -215,6 +212,20 @@
     }
     
     return nil;    
+}
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    
+    //Get the east and west points on the map so we calculate the distance (zoom level) of the current map view.
+    MKMapRect mRect = self.mapView.visibleMapRect;
+    MKMapPoint eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect));
+    MKMapPoint westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect));
+    
+    //Set our current distance instance variable.
+    currenDist = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint);
+    
+    //Set our current centre point on the map instance variable.
+    currentCentre = self.mapView.centerCoordinate;
 }
 
 @end
